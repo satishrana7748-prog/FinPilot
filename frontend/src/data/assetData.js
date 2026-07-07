@@ -1,0 +1,53 @@
+export const assetData = [
+  {
+    id: 1,
+    name: "Stocks",
+    symbol: "NIFTY 50",
+    price: "₹24,850",
+    change: "+1.84%",
+    trend: "Bullish",
+    risk: "Medium",
+    action: "BUY",
+    color: "green",
+    icon: "📈",
+  },
+
+  {
+    id: 2,
+    name: "Gold",
+    symbol: "24K",
+    price: "₹9,850/g",
+    change: "+0.62%",
+    trend: "Bullish",
+    risk: "Low",
+    action: "BUY",
+    color: "yellow",
+    icon: "🥇",
+  },
+
+  {
+    id: 3,
+    name: "Silver",
+    symbol: "999",
+    price: "₹118/g",
+    change: "-0.25%",
+    trend: "Neutral",
+    risk: "Medium",
+    action: "HOLD",
+    color: "gray",
+    icon: "🥈",
+  },
+
+  {
+    id: 4,
+    name: "Bitcoin",
+    symbol: "BTC",
+    price: "₹89,50,000",
+    change: "+4.22%",
+    trend: "Bullish",
+    risk: "High",
+    action: "BUY",
+    color: "orange",
+    icon: "₿",
+  },
+];
