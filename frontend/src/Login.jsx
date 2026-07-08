@@ -186,7 +186,7 @@ function Login({ onLogin }) {
             fontSize: "14px",
           }}
         >
-          © 2026 FinPilot | B.Tech Major Project
+        
         </p>
       </div>
     </div>
