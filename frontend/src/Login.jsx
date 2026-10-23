@@ -1,22 +1,39 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 function Login({ onLogin }) {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
   const registerUser = async () => {
+    if (!fullName || !email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
     try {
-      const res = await fetch("http://127.0.0.1:8000/register", {
+      const res = await fetch(`${API_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          full_name: fullName,
+          email: email,
+          password: password,
+        }),
       });
 
       const data = await res.json();
 
       alert(data.message);
+      if (res.ok) {
+        setFullName("");
+        setEmail("");
+        setPassword("");
+      }
     } catch (err) {
       console.error(err);
       alert("Register Failed");
@@ -25,7 +42,7 @@ function Login({ onLogin }) {
 
   const loginUser = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/login", {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,6 +120,29 @@ function Login({ onLogin }) {
           Email Address
         </label>
 
+        <label
+          style={{
+            fontWeight: "600",
+          }}
+        >
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          placeholder="Enter Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "14px",
+            marginTop: "8px",
+            marginBottom: "20px",
+            borderRadius: "12px",
+            border: "1px solid #ddd",
+            fontSize: "16px",
+          }}
+        />
         <input
           type="email"
           placeholder="Enter Email"
@@ -185,9 +225,7 @@ function Login({ onLogin }) {
             color: "#6b7280",
             fontSize: "14px",
           }}
-        >
-        
-        </p>
+        ></p>
       </div>
     </div>
   );

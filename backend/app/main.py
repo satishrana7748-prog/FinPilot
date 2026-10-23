@@ -5,6 +5,8 @@ from app.routes.auth import router as auth_router
 from app.routes.data import router as data_router
 from app.routes.predict import router as predict_router
 from app.routes.chat import router as chat_router
+from app.database.database import Base, engine
+from app.models.user import User
 
 # Create FastAPI app
 app = FastAPI(title="FinPilot API")
@@ -15,12 +17,15 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
         "https://finpilot-frontend-uwic.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+Base.metadata.create_all(bind=engine)
 
 # Register Routers
 app.include_router(auth_router)

@@ -18,3 +18,34 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Backend environment and private data
+backend/.env
+backend/venv/
+backend/include/
+backend/logs/
+backend/users.db
+backend/user.db/
+backend/uploads/
+backend/saved_models/
+
+# Stock prediction local environments and generated data
+stock_prediction/venv/
+stock_prediction/data/
+stock_prediction/results/
+stock_prediction/models/
+stock_prediction/models_saved/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+.env
+.env.*
+!.env.example
